@@ -11,34 +11,38 @@ export default function SearchContainer({
     "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline my-2 text-black";
 
   return (
-    <motion.form
-      onSubmit={onSubmit}
-      className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <h1 className="text-3xl font-bold text-center p-4">{title}</h1>
-      <Input label="City" id="city" className={inputClasses} />
-      {!hideDays && (
-        <Select
-          label="Days"
-          id="days"
-          className={inputClasses}
-          options={[
-            { value: "1", label: "1" },
-            { value: "2", label: "2" },
-            { value: "3", label: "3" },
-            { value: "4", label: "4" },
-            { value: "5", label: "5" },
-            { value: "6", label: "6" },
-            { value: "7", label: "7" },
-          ]}
-        />
-      )}
-      <button type="submit" className="btn btn-accent mt-4">
-        Search
-      </button>
-    </motion.form>
+    <div className="flex justify-center items-center">
+      <motion.form
+        onSubmit={onSubmit}
+        className="container p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold text-center p-4">{title}</h1>
+        <div className="flex flex-col justify-start">
+          <Input label="City" id="city" className={inputClasses} />
+          {!hideDays && (
+            <Select
+              label="Days"
+              id="days"
+              className={inputClasses}
+              options={[
+                { value: "1", label: "1" },
+                { value: "2", label: "2" },
+                { value: "3", label: "3" },
+                { value: "4", label: "4" },
+                { value: "5", label: "5" },
+                { value: "6", label: "6" },
+                { value: "7", label: "7" },
+              ]}
+            />
+          )}
+        </div>
+        <button type="submit" className="btn btn-accent mt-4">
+          Search
+        </button>
+      </motion.form>
+    </div>
   );
 }

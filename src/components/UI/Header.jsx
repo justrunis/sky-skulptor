@@ -8,6 +8,7 @@ import {
   FaInfo,
   FaHome,
   FaSearch,
+  FaLocationArrow,
 } from "react-icons/fa";
 import constants from "../../constants/constants";
 
@@ -80,6 +81,15 @@ export default function Header() {
             >
               <FaHome />
               Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/local"
+              className="text-white hover:text-gray-300 flex items-center gap-1"
+            >
+              <FaLocationArrow />
+              Local forecast
             </Link>
           </li>
           <li>

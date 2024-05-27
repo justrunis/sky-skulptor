@@ -6,6 +6,15 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
 }
 
+@font-face {
+  font-family: "Merriweather";
+  src: url(./assets/fonts/Merriweather/Merriweather-Regular.ttf);
+}
+
+* {
+  font-family: "Merriweather", sans-serif;
+}
+
 .error-block {
   background-color: #f0d9e5;
   margin: 1rem 0;

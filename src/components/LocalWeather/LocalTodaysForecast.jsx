@@ -1,19 +1,14 @@
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import LoadingIndicator from "../UI/LoadingIndicator";
 import ErrorContainer from "../UI/ErrorContainer";
-import { fetchWeatherForEachHour } from "../../api/http";
-import constants from "../../constants/constants";
-import HoursWeatherCard from "./HoursWeatherCard";
-import HourlyForecast from "./HourlyForecast";
+import LoadingIndicator from "../UI/LoadingIndicator";
+import HourlyForecast from "../TodaysWeather/HourlyForecast";
 
-export default function TodaysWeatherDisplayContainer({ city }) {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["weather", { location: city }],
-    queryFn: () => fetchWeatherForEachHour({ location: city }),
-    staleTime: constants.STALE_TIME,
-  });
-
+export default function LocalTodaysForecast({
+  data,
+  isLoading,
+  isError,
+  error,
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -37,8 +32,8 @@ export default function TodaysWeatherDisplayContainer({ city }) {
       {data?.forecast && !isError && (
         <>
           <p className="text-lg mb-6">
-            Weather information for {city}, {data.location.country} for the next
-            24 hours.
+            Weather information for {data.location.name},{" "}
+            {data.location.country} for the next 24 hours.
           </p>
           <HourlyForecast forecast={data.forecast} />
         </>

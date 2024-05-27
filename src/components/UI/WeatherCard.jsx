@@ -14,16 +14,19 @@ export default function WeatherCard({ day, delay = 0 }) {
       transition={{ duration: 0.5, delay: delay }}
     >
       <h2 className="text-xl font-bold mb-2 text-center">{day.date}</h2>
-      <div className="flex justify-center items-center gap-2">
-        <p className="text-lg mb-2">
-          <img src={day.day.condition.icon} alt={day.day.condition.text} />
-        </p>
-        <WeatherDetail
-          className="text-lg mb-2"
-          label="Avg Temp"
-          value={day.day.avgtemp_c}
-          needsTemperatureUnit={true}
+      <h2 className="text-xl font-bold mb-2 text-center">
+        {day.day.condition.text}
+      </h2>
+
+      <div className="flex justify-center items-center m-2">
+        <img
+          className="mx-auto"
+          src={day.day.condition.icon}
+          alt={day.day.condition.text}
         />
+        <p>
+          {day.day.maxtemp_c}°C / {day.day.mintemp_c}°C
+        </p>
       </div>
       <button
         className="btn btn-primary"
@@ -49,22 +52,6 @@ export default function WeatherCard({ day, delay = 0 }) {
               staggerChildren: 1,
             }}
           >
-            {/* Max Temp */}
-            <WeatherDetail
-              className="text-lg mb-2"
-              label="Max Temp"
-              value={day.day.maxtemp_c}
-              needsTemperatureUnit={true}
-            />
-
-            {/* Min Temp */}
-            <WeatherDetail
-              className="text-lg mb-2"
-              label="Min Temp"
-              value={day.day.mintemp_c}
-              needsTemperatureUnit={true}
-            />
-
             {/* Average Wind speed */}
             <WeatherDetail
               className="text-lg mb-2"
@@ -79,6 +66,35 @@ export default function WeatherCard({ day, delay = 0 }) {
               label="Rain chance"
               value={day.day.daily_chance_of_rain}
               needsPercentage={true}
+            />
+
+            {/* Humidity */}
+            <WeatherDetail
+              className="text-lg mb-2"
+              label="Humidity"
+              value={day.day.avghumidity}
+              needsPercentage={true}
+            />
+
+            {/* UV Index */}
+            <WeatherDetail
+              className="text-lg mb-2"
+              label="UV Index"
+              value={day.day.uv}
+            />
+
+            {/* Sunrise */}
+            <WeatherDetail
+              className="text-lg mb-2"
+              label="Sunrise"
+              value={day.astro.sunrise}
+            />
+
+            {/* Sunset */}
+            <WeatherDetail
+              className="text-lg mb-2"
+              label="Sunset"
+              value={day.astro.sunset}
             />
           </motion.div>
         )}

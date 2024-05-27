@@ -19,8 +19,6 @@ export async function fetchWeatherData({ location, days }) {
       },
     });
 
-    console.log("RESPONSE ", response);
-
     if (response.status === 400) {
       const error = new Error("An error occurred while fetching weather data");
       error.code = response.status;
@@ -53,8 +51,6 @@ export async function fetchWeatherForEachHour({ location }) {
         days: 2, // get 2 days in case the user wants to see the weather for the next 24 hours
       },
     });
-
-    console.log("RESPONSE ", response);
 
     if (response.status === 400) {
       const error = new Error("An error occurred while fetching weather data");

@@ -1,25 +1,20 @@
-import { motion } from "framer-motion";
-import { fetchWeatherData } from "../../api/http";
-import { useQuery } from "@tanstack/react-query";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import ErrorContainer from "../UI/ErrorContainer";
+import { motion } from "framer-motion";
 import WeatherCard from "../UI/WeatherCard";
 
-import constants from "../../constants/constants";
-
-export default function WeatherDisplayContainer({ city, days }) {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["weather", { location: city, days }],
-    queryFn: () => fetchWeatherData({ location: city, days }),
-    staleTime: constants.STALE_TIME,
-  });
-
+export default function LocalWeeksForecast({
+  data,
+  isLoading,
+  isError,
+  error,
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white p-8"
+      className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg text-white p-8"
     >
       {!isLoading && !data?.forecast && (
         <ErrorContainer
@@ -37,10 +32,10 @@ export default function WeatherDisplayContainer({ city, days }) {
       {data?.forecast && !isError && (
         <>
           <p className="text-lg mb-6">
-            Weather information for {city}, {data.location.country} for the next{" "}
-            {days} days.
+            Weather information for {data.location.name},{" "}
+            {data.location.country} for the next 7 days.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 2xl:grid-cols-4">
             {data.forecast.forecastday.map((day, index) => (
               <WeatherCard day={day} key={day.date} delay={index * 0.2} />
             ))}
