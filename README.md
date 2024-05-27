@@ -1,8 +1,11 @@
-# React + Vite
+# Sky Skulptor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sky Skulptor is a weather information application that provides users with real-time weather updates. It allows users to access weather data for any location worldwide, helping them plan their activities accordingly.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-time Weather Updates**: Sky Skulptor fetches the latest weather data from reliable sources to provide users with accurate and up-to-date information.
+
+- **Location-based Weather**: Users can search for weather information by entering a specific location or allowing the app to access their current location.
+
+- **Detailed Weather Reports**: Sky Skulptor provides detailed weather reports, including temperature, humidity and wind speed forecasts.

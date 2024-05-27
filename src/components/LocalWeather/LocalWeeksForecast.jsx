@@ -30,17 +30,11 @@ export default function LocalWeeksForecast({
         />
       )}
       {data?.forecast && !isError && (
-        <>
-          <p className="text-lg mb-6">
-            Weather information for {data.location.name},{" "}
-            {data.location.country} for the next 7 days.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 2xl:grid-cols-4">
-            {data.forecast.forecastday.map((day, index) => (
-              <WeatherCard day={day} key={day.date} delay={index * 0.2} />
-            ))}
-          </div>
-        </>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 2xl:grid-cols-4">
+          {data.forecast.forecastday.map((day, index) => (
+            <WeatherCard day={day} key={day.date} delay={index * 0.2} />
+          ))}
+        </div>
       )}
     </motion.div>
   );

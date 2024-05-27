@@ -1,6 +1,9 @@
 import { LineChart } from "@mui/x-charts";
 
-export default function LineChartComponent({ data }) {
+export default function LineChartComponent({
+  data,
+  label = "Temperature (°C)",
+}) {
   const labels = data.map((hour) =>
     new Date(hour.time).toLocaleTimeString([], {
       hour: "2-digit",
@@ -16,7 +19,7 @@ export default function LineChartComponent({ data }) {
       series={[
         {
           data: temperatures,
-          label: "Temperature (°C)",
+          label: label,
         },
       ]}
       xAxis={[

@@ -37,8 +37,8 @@ export default function TodaysWeatherDisplayContainer({ city }) {
       {data?.forecast && !isError && (
         <>
           <p className="text-lg mb-6">
-            Weather information for {city}, {data.location.country} for the next
-            24 hours.
+            Weather information for {data.location.name},{" "}
+            {data.location.country} for the next 24 hours.
           </p>
           <HourlyForecast forecast={data.forecast} />
         </>

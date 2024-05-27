@@ -30,11 +30,19 @@ export default function LocalWeatherDisplayContainer({ userCoords }) {
       <Tabs>
         <TabList
           classID="tab-list"
-          className="flex gap-2 p-4 bg-base-100 rounded-lg m-2 justify-center sm:justify-start"
+          className="flex flex-col gap-2 p-4 bg-base-100 rounded-lg m-2 justify-center sm:flex-row sm:justify-start items-center"
         >
           <Tab className="btn btn-accent">Weeks forecast</Tab>
           <Tab className="btn btn-accent">Todays forecast</Tab>
+          {data?.location && (
+            <Tab>
+              <h1 className="text-3xl font-bold text-center text-accent p-4">
+                {data.location.name}, {data.location.country}
+              </h1>
+            </Tab>
+          )}
         </TabList>
+
         <TabPanel>
           <LocalWeeksForecast
             data={data}
@@ -51,6 +59,7 @@ export default function LocalWeatherDisplayContainer({ userCoords }) {
             error={error}
           />
         </TabPanel>
+        <TabPanel></TabPanel>
       </Tabs>
     </motion.div>
   );
