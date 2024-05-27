@@ -1,6 +1,5 @@
 import React from "react";
 import { LineChart } from "@mui/x-charts";
-import HoursWeatherCard from "./HoursWeatherCard";
 
 export default function HourlyForecast({ forecast }) {
   let todayTemperatures = {};
@@ -48,70 +47,40 @@ export default function HourlyForecast({ forecast }) {
   );
 
   // Sort temperature data by time
-  todayAverageTemperatures.sort((a, b) => a.x - b.x);
-  tomorrowAverageTemperatures.sort((a, b) => a.x - b.x);
+  const all = [
+    ...todayAverageTemperatures.sort((a, b) => a.x - b.x),
+    ...tomorrowAverageTemperatures.sort((a, b) => a.x - b.x),
+  ];
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <div>
-        <h2 className="text-xl font-bold mb-2 text-center">Today</h2>
-        {todayAverageTemperatures.length > 0 && (
-          <LineChart
-            width={400}
-            height={300}
-            series={[
-              {
-                data: todayAverageTemperatures.map((temp) => temp.y),
-                label: "Temperature (°C)",
-                id: "today",
-              },
-            ]}
-            xAxis={[
-              {
-                data: todayAverageTemperatures.map((temp) => temp.x.toString()),
-                label: "Time (24h)",
-              },
-            ]}
-            yAxis={[
-              {
-                label: "Temperature (°C)",
-              },
-            ]}
-            customSeriesColors="#007bff"
-          />
-        )}
-      </div>
-      <div>
-        <h2 className="text-xl font-bold mb-2 text-center">Tomorrow</h2>
-        {tomorrowAverageTemperatures.length > 0 && (
-          <LineChart
-            width={400}
-            height={300}
-            series={[
-              {
-                data: tomorrowAverageTemperatures.map((temp) => temp.y),
-                label: "Temperature (°C)",
-                id: "tomorrow",
-              },
-            ]}
-            xAxis={[
-              {
-                data: tomorrowAverageTemperatures.map((temp) =>
-                  temp.x.toString()
-                ),
-                label: "Time (24h)",
-              },
-            ]}
-            yAxis={[
-              {
-                label: "Temperature (°C)",
-              },
-            ]}
-            customSeriesColors="#28a745"
-            tooltip={true}
-          />
-        )}
-      </div>
+      {todayAverageTemperatures.length > 0 && (
+        <LineChart
+          width={600}
+          height={300}
+          series={[
+            {
+              data: all.map((temp) => temp.y),
+              label: "Temperature (°C)",
+              id: "today",
+            },
+          ]}
+          xAxis={[
+            {
+              data: all.map((temp) => temp.x.toString()),
+              label: "Time (24h)",
+              scaleType: "point",
+              tickInterval: (time) => (time % 3 === 0 ? 1 : 0),
+            },
+          ]}
+          yAxis={[
+            {
+              label: "Temperature (°C)",
+            },
+          ]}
+          customSeriesColors="#007bff"
+        />
+      )}
     </div>
   );
 }
