@@ -56,7 +56,7 @@ export default function Header() {
 
   return (
     <header className="bg-primary py-4 text-neutral-content flex justify-between p-20">
-      <div className="flex items-center">
+      <div className="flex flex-row items-center">
         <Link to="/" className="text-white text-xl font-bold ml-5">
           SkySculptor
           <img

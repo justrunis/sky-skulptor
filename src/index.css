@@ -48,3 +48,11 @@ body {
 .error-block p {
   margin: 0;
 }
+
+.custom-animation {
+  transition: transform 0.3s ease;
+}
+
+.custom-animation:hover {
+  transform: scale(1.05);
+}
