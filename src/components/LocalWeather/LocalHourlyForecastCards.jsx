@@ -4,7 +4,7 @@ export default function LocalHourlyForecastCards({ forecast }) {
   let hoursDisplayed = 0;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 2xl:grid-cols-6">
+    <div className="grid grid-cols-1 gap-1">
       {forecast.forecastday.map((day, index) => {
         if (index === 0) {
           const currentTime = new Date();

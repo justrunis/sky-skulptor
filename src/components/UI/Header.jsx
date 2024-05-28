@@ -58,12 +58,12 @@ export default function Header() {
     <header className="bg-primary py-4 text-neutral-content flex justify-between p-20">
       <div className="flex flex-row items-center">
         <Link to="/" className="text-white text-xl font-bold ml-5">
-          SkySculptor
+          Sky Skulptor
           <img
             src={logo}
             height={logoHeight}
             width={logoWidth}
-            alt="SkySculptor"
+            alt="SkySkulptor"
             className="ml-2 inline"
           />
         </Link>

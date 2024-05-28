@@ -1,84 +1,72 @@
-import React from "react";
 import { LineChart } from "@mui/x-charts";
+import Chart from "../UI/Chart";
+import { processData, sortAndCombineData } from "../../api/dataUtils";
 
 export default function HourlyForecast({ forecast }) {
-  let todayTemperatures = {};
-  let tomorrowTemperatures = {};
-
-  // Collect temperature data for today and tomorrow
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
 
-  forecast.forecastday.forEach((day) => {
-    day.hour.forEach((hour) => {
-      const hourTime = new Date(hour.time).getHours();
+  const { todayData, tomorrowData } = processData(forecast, currentHour);
 
-      if (hourTime >= currentHour) {
-        if (!todayTemperatures[hourTime]) {
-          todayTemperatures[hourTime] = [];
-        }
-        todayTemperatures[hourTime].push(hour.temp_c);
-      } else {
-        if (!tomorrowTemperatures[hourTime]) {
-          tomorrowTemperatures[hourTime] = [];
-        }
-        tomorrowTemperatures[hourTime].push(hour.temp_c);
-      }
-    });
+  const combinedData = sortAndCombineData(todayData, tomorrowData, currentHour);
+
+  const allTemperatures = combinedData.map((item) => ({
+    x: item.x,
+    y: item.temp,
+  }));
+
+  const allRainPossibility = combinedData.map((item) => ({
+    x: item.x,
+    y: item.rain,
+  }));
+
+  const allCloudCover = combinedData.map((item) => ({
+    x: item.x,
+    y: item.cloud,
+  }));
+
+  const allWindSpeed = combinedData.map((item) => ({
+    x: item.x,
+    y: item.wind,
+  }));
+
+  const xAxisLabels = combinedData.map((item) => {
+    const hour = item.x;
+    return hour < 10 ? `0${hour}:00` : `${hour}:00`;
   });
 
-  // Calculate average temperature for each hour for today and tomorrow
-  const todayAverageTemperatures = Object.keys(todayTemperatures).map(
-    (hour) => ({
-      x: parseInt(hour),
-      y:
-        todayTemperatures[hour].reduce((acc, val) => acc + val, 0) /
-        todayTemperatures[hour].length,
-    })
-  );
-
-  const tomorrowAverageTemperatures = Object.keys(tomorrowTemperatures).map(
-    (hour) => ({
-      x: parseInt(hour),
-      y:
-        tomorrowTemperatures[hour].reduce((acc, val) => acc + val, 0) /
-        tomorrowTemperatures[hour].length,
-    })
-  );
-
-  // Sort temperature data by time
-  const all = [
-    ...todayAverageTemperatures.sort((a, b) => a.x - b.x),
-    ...tomorrowAverageTemperatures.sort((a, b) => a.x - b.x),
-  ];
-
   return (
-    <div className="flex flex-col lg:flex-row">
-      {todayAverageTemperatures.length > 0 && (
-        <LineChart
-          width={600}
-          height={300}
-          series={[
-            {
-              data: all.map((temp) => temp.y),
-              label: "Temperature (°C)",
-              id: "today",
-            },
-          ]}
-          xAxis={[
-            {
-              data: all.map((temp) => temp.x.toString()),
-              label: "Time (24h)",
-              scaleType: "point",
-              tickInterval: (time) => (time % 3 === 0 ? 1 : 0),
-            },
-          ]}
-          yAxis={[
-            {
-              label: "Temperature (°C)",
-            },
-          ]}
-          customSeriesColors="#007bff"
+    <div className="container mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      {allTemperatures.length > 0 && (
+        <Chart
+          data={allTemperatures}
+          label="Temperature (°C)"
+          color="#FF5733"
+          xAxisLabels={xAxisLabels}
+        />
+      )}
+      {allRainPossibility.length > 0 && (
+        <Chart
+          data={allRainPossibility}
+          label="Rain chance (%)"
+          color="#3498DB"
+          xAxisLabels={xAxisLabels}
+        />
+      )}
+      {allWindSpeed.length > 0 && (
+        <Chart
+          data={allWindSpeed}
+          label="Wind speed (km/h)"
+          color="#8E44AD"
+          xAxisLabels={xAxisLabels}
+        />
+      )}
+      {allCloudCover.length > 0 && (
+        <Chart
+          data={allCloudCover}
+          label="Cloud coverage (%)"
+          color="#95A5A6"
+          xAxisLabels={xAxisLabels}
         />
       )}
     </div>

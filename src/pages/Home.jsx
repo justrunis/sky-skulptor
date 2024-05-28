@@ -14,7 +14,7 @@ export default function Home() {
         transition={{ duration: 1 }}
         className="container mx-auto flex flex-col items-center justify-center bg-primary text-neutral-content rounded-lg mt-8 text-white p-8 m-5"
       >
-        <h1 className="text-4xl mb-8 text-center">Welcome to Weather App</h1>
+        <h1 className="text-4xl mb-8 text-center">Welcome to Sky Skulptor</h1>
         <p className="text-lg mb-8 text-center">
           Get the latest weather information for your location or any other
           location worldwide.
