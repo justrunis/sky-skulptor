@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Input from "../UI/Input";
 import Select from "../UI/Select";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function SearchContainer({
   title = "Search",
@@ -14,14 +15,18 @@ export default function SearchContainer({
     <div className="flex justify-center items-center">
       <motion.form
         onSubmit={onSubmit}
-        className="container p-4 bg-primary text-primary-content rounded-lg mt-8"
+        className="container flex flex-col items-center w-1/2 p-4 bg-primary text-primary-content rounded-lg mt-8"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl font-bold text-center p-4">{title}</h1>
-        <div className="flex flex-col justify-start">
-          <Input label="City" id="city" className={inputClasses} />
+        <div className="flex flex-col w-1/2">
+          <Input
+            label="Query parameter (City, Country, Coordinates)"
+            id="city"
+            className={inputClasses}
+          />
           {!hideDays && (
             <Select
               label="Days"

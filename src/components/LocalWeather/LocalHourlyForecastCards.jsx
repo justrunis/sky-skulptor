@@ -13,7 +13,7 @@ export default function LocalHourlyForecastCards({ forecast }) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-1">
+    <div className="grid grid-cols-1 gap-1 justify-between">
       {/* Mapping over each forecast day */}
       {forecast.forecastday.map((day, index) => {
         if (index >= 2) {
@@ -31,7 +31,7 @@ export default function LocalHourlyForecastCards({ forecast }) {
 
         return (
           <Fragment key={day.date}>
-            <div className="grid grid-cols-8 gap-6 place-items-center p-4 text-primary-content uppercase text-3xl">
+            <div className="grid grid-cols-1 gap-5 place-items-center p-4 text-primary-content uppercase text-3xl">
               <h1>{formatTime(day.date)}</h1>
             </div>
             {day.hour.map((hour) => {

@@ -4,6 +4,7 @@ import LoadingIndicator from "../UI/LoadingIndicator";
 import HourlyForecast from "../TodaysWeather/HourlyForecast";
 import { useState } from "react";
 import LocalHourlyForecastCards from "./LocalHourlyForecastCards";
+import HoursWeatherCard from "../TodaysWeather/HoursWeatherCard";
 
 export default function LocalTodaysForecast({
   data,
@@ -34,7 +35,16 @@ export default function LocalTodaysForecast({
         />
       )}
       {data?.forecast && !isError && (
-        <HourlyForecast forecast={data.forecast} />
+        <>
+          <h1 className="text-3xl font-bold text-center p-4 text-primary-content m-5">
+            Current weather
+          </h1>
+          <HoursWeatherCard hour={data.current} delay={0.2} />
+          <h2 className="text-2xl font-bold text-center p-4 text-primary-content m-5">
+            Hourly Forecast graphs
+          </h2>
+          <HourlyForecast forecast={data.forecast} />
+        </>
       )}
       <button
         className="btn btn-accent text-accent-content mt-5"
