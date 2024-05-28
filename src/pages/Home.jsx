@@ -12,7 +12,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="container mx-auto flex flex-col items-center justify-center bg-primary text-neutral-content rounded-lg mt-8 text-white p-8 m-5"
+        className="container mx-auto flex flex-col items-center justify-center bg-primary text-primary-content rounded-lg mt-8 p-8 m-5"
       >
         <h1 className="text-4xl mb-8 text-center">Welcome to Sky Skulptor</h1>
         <p className="text-lg mb-8 text-center">
@@ -24,29 +24,25 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
-            className="btn btn-accent custom-animation"
+            className="btn btn-accent text-accent-content custom-animation"
           >
-            <Link to="/today" className="text-white">
-              Today
-            </Link>
+            <Link to="/today">Today</Link>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, type: "spring", stiffness: 120 }}
-            className="btn btn-accent custom-animation"
+            className="btn btn-accent text-accent-content custom-animation"
           >
-            <Link to="/weekly" className="text-white">
-              Weekly
-            </Link>
+            <Link to="/weekly">Weekly</Link>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.9, type: "spring", stiffness: 120 }}
-            className="btn btn-accent custom-animation"
+            className="btn btn-accent text-accent-content custom-animation"
           >
-            <Link to="/local" className="text-white">
+            <Link to="/local" className="">
               Local
             </Link>
           </motion.div>

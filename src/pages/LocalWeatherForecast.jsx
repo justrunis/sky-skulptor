@@ -19,7 +19,7 @@ export default function LocalWeatherForecast() {
     <main className="flex flex-col min-h-screen">
       <Header />
       {userCoords.latitude === 0 && userCoords.longitude === 0 ? (
-        <div className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white p-8">
+        <div className="container mx-auto p-4 bg-primary text-primary-content rounded-lg mt-8 p-8">
           <p className="text-lg">
             Please enable location services to view the local weather forecast.
           </p>

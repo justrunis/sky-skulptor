@@ -22,7 +22,7 @@ export default function TodaysWeatherDisplayContainer({ city }) {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white p-8 mb-5"
+      className="container mx-auto p-4 bg-primary text-primary-content rounded-lg mt-8 p-8 mb-5"
     >
       {!isLoading && !data?.forecast && (
         <ErrorContainer
@@ -45,7 +45,7 @@ export default function TodaysWeatherDisplayContainer({ city }) {
           </p>
           <HourlyForecast forecast={data.forecast} />
           <button
-            className="btn btn-accent mt-5"
+            className="btn btn-accent text-accent-content mt-5"
             onClick={() => setShowDetails(!showDetails)}
           >
             {showDetails ? "Hide" : "Show"} Details
@@ -56,7 +56,7 @@ export default function TodaysWeatherDisplayContainer({ city }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.5 }}
-              className="container flex flex-col bg-primary text-neutral-content rounded-lg text-white"
+              className="container flex flex-col bg-primary text-primary-content rounded-lg"
             >
               <h2 className="text-2xl font-bold text-center m-4">
                 Hourly Forecast Details

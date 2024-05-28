@@ -8,13 +8,13 @@ export default function SearchContainer({
   hideDays = false,
 }) {
   const inputClasses =
-    "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline my-2 text-black";
+    "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline my-2 bg-base-100 text-primary-content";
 
   return (
     <div className="flex justify-center items-center">
       <motion.form
         onSubmit={onSubmit}
-        className="container p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white"
+        className="container p-4 bg-primary text-primary-content rounded-lg mt-8"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -39,7 +39,7 @@ export default function SearchContainer({
             />
           )}
         </div>
-        <button type="submit" className="btn btn-accent mt-4">
+        <button type="submit" className="btn btn-info text-info-content mt-4">
           Search
         </button>
       </motion.form>

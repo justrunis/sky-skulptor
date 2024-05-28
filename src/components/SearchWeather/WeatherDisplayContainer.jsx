@@ -19,7 +19,7 @@ export default function WeatherDisplayContainer({ city, days }) {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto p-4 bg-primary text-neutral-content rounded-lg mt-8 text-white p-8"
+      className="container mx-auto p-4 bg-primary text-primary-content rounded-lg mt-8 p-8"
     >
       {!isLoading && !data?.forecast && (
         <ErrorContainer

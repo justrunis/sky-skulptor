@@ -20,6 +20,9 @@ export default function Chart({ data, label, color, xAxisLabels }) {
           scaleType: "point",
           tickInterval: (time) =>
             parseInt(time.split(":")[0]) % 3 === 0 ? 1 : 0,
+          classes: {
+            tickLabels: "text-sm",
+          },
         },
       ]}
       yAxis={[

@@ -8,7 +8,7 @@ export default function WeatherCard({ day, delay = 0 }) {
   return (
     <motion.div
       key={day.date}
-      className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-110"
+      className="max-w-sm p-6 bg-base-100 text-primary-content border border-gray-200 rounded-lg shadow"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay }}

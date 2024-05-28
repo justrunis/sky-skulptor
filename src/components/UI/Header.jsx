@@ -55,16 +55,19 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-primary py-4 text-neutral-content flex justify-between p-20">
+    <header className="bg-primary py-4 text-primary-content flex justify-between p-20">
       <div className="flex flex-row items-center">
-        <Link to="/" className="text-white text-xl font-bold ml-5">
+        <Link
+          to="/"
+          className="text-primary-content hover:text-base-100 text-xl font-bold ml-5"
+        >
           Sky Skulptor
           <img
             src={logo}
             height={logoHeight}
             width={logoWidth}
             alt="SkySkulptor"
-            className="ml-2 inline"
+            className="ml-2 inline "
           />
         </Link>
       </div>
@@ -77,7 +80,7 @@ export default function Header() {
           <li>
             <Link
               to="/"
-              className="text-white hover:text-gray-300 flex items-center gap-1"
+              className="hover:text-base-100 flex items-center gap-1"
             >
               <FaHome />
               Home
@@ -86,7 +89,7 @@ export default function Header() {
           <li>
             <Link
               to="/local"
-              className="text-white hover:text-gray-300 flex items-center gap-1"
+              className="hover:text-base-100 flex items-center gap-1"
             >
               <FaLocationArrow />
               Local forecast
@@ -95,7 +98,7 @@ export default function Header() {
           <li>
             <Link
               to="/today"
-              className="text-white hover:text-gray-300 flex items-center gap-1"
+              className="hover:text-base-100 flex items-center gap-1"
             >
               <FaInfo />
               Todays forecast
@@ -104,21 +107,21 @@ export default function Header() {
           <li>
             <Link
               to="/weekly"
-              className="text-white hover:text-gray-300 flex items-center gap-1"
+              className="hover:text-base-100 flex items-center gap-1"
             >
               <FaSearch />
               Weeks forecast
             </Link>
           </li>
           <button
-            className="text-white hover:text-gray-300 flex items-center gap-1"
+            className="hover:text-base-100 flex items-center gap-1"
             onClick={toggleTheme}
           >
             {theme === secondaryThemeName ? <FaRegMoon /> : <FaRegSun />}
           </button>
         </ul>
         <button
-          className="text-white text-xl font-bold ml-5 lg:hidden"
+          className="text-xl font-bold ml-5 lg:hidden"
           onClick={toggleMenu}
         >
           <FaBars />

@@ -14,12 +14,11 @@ export default function HoursWeatherCard({ hour, delay = 0 }) {
 
   return (
     <motion.div
-      className="grid grid-cols-8 gap-6 place-items-center p-4 bg-gray-800 border border-gray-200 rounded-lg shadow hover:scale-110 m-1"
+      className="grid grid-cols-8 gap-6 place-items-center p-4 bg-base-100 text-primary-content border border-gray-200 rounded-lg shadow hover:scale-110 m-1"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay }}
     >
-      {console.log(hour)}
       <h2 className="col-span-1">{formatTime(hour.time)}</h2>
       <p className="col-span-1">{hour.temp_c} &#176;C</p>
       <img
