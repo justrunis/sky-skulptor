@@ -35,7 +35,13 @@ export default function SearchContainer({
         <h1 className="text-3xl font-bold text-center p-4">{title}</h1>
         <div className="flex flex-col w-1/2">
           <Tooltip title={tooltipText} arrow placement="right">
-            <Input label="Query parameter" id="city" className={inputClasses} />
+            <div>
+              <Input
+                label="Query parameter"
+                id="city"
+                className={inputClasses}
+              />
+            </div>
           </Tooltip>
           {!hideDays && (
             <Select
