@@ -29,6 +29,12 @@ export default function Header() {
     const theme = localStorage.getItem("sky-sculptor-theme");
     if (theme) {
       document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("sky-sculptor-theme", theme);
+      setTheme(theme);
+    } else {
+      document.documentElement.setAttribute("data-theme", secondaryThemeName);
+      localStorage.setItem("sky-sculptor-theme", secondaryThemeName);
+      setTheme(secondaryThemeName);
     }
   }, []);
 
@@ -118,6 +124,7 @@ export default function Header() {
             onClick={toggleTheme}
           >
             {theme === secondaryThemeName ? <FaRegMoon /> : <FaRegSun />}
+            Toggle theme
           </button>
         </ul>
         <button

@@ -36,7 +36,7 @@ export default function HourlyForecast({ forecast }) {
   });
 
   return (
-    <div className="container mx-auto grid grid-cols-1 bg-white rounded-3xl xl:grid-cols-2 gap-4 mt-8 xl:p-12">
+    <div className="container mx-auto grid grid-cols-1 bg-secondary rounded-3xl xl:grid-cols-2 gap-4 mt-8 xl:p-12">
       {allTemperatures.length > 0 && (
         <Chart
           data={allTemperatures}

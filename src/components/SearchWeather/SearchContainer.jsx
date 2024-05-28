@@ -11,6 +11,18 @@ export default function SearchContainer({
   const inputClasses =
     "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline my-2 bg-base-100 text-primary-content";
 
+  const tooltipText = (
+    <div>
+      <p
+        className="
+        text-lg
+      "
+      >
+        Enter a city name, country name or coordinates (latitude, longitude)
+      </p>
+    </div>
+  );
+
   return (
     <div className="flex justify-center items-center">
       <motion.form
@@ -22,11 +34,9 @@ export default function SearchContainer({
       >
         <h1 className="text-3xl font-bold text-center p-4">{title}</h1>
         <div className="flex flex-col w-1/2">
-          <Input
-            label="Query parameter (City, Country, Coordinates)"
-            id="city"
-            className={inputClasses}
-          />
+          <Tooltip title={tooltipText} arrow placement="right">
+            <Input label="Query parameter" id="city" className={inputClasses} />
+          </Tooltip>
           {!hideDays && (
             <Select
               label="Days"
