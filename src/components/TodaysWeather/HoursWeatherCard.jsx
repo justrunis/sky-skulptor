@@ -14,7 +14,7 @@ export default function HoursWeatherCard({ hour, delay = 0 }) {
 
   return (
     <motion.div
-      className="grid grid-cols-8 gap-6 items-center p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-110 m-1"
+      className="grid grid-cols-8 gap-6 place-items-center p-4 bg-gray-800 border border-gray-200 rounded-lg shadow hover:scale-110 m-1"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay }}
